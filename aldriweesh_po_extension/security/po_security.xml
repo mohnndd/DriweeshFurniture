@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="group_po_external" model="res.groups">
+            <field name="name">Allow To View External PO</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+        <record id="group_po_internal" model="res.groups">
+            <field name="name">Allow To View Internal PO</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+
+
+         <record id="base.user_admin" model="res.users">
+            <field name="groups_id" eval="[(4, ref('group_po_external'))]"/>
+        </record>
+         <record id="base.user_admin" model="res.users">
+            <field name="groups_id" eval="[(4, ref('group_po_internal'))]"/>
+        </record>
+
+        <record id="base.user_root" model="res.users">
+            <field name="groups_id" eval="[(4, ref('group_po_external'))]"/>
+        </record>
+        <record id="base.user_root" model="res.users">
+            <field name="groups_id" eval="[(4, ref('group_po_internal'))]"/>
+        </record>
+
+
+
+        <record id="rule_PO_Type_external_id" model="ir.rule">
+            <field name="name">PO External</field>
+            <field name="model_id" ref="aldriweesh_po_extension.model_purchase_order" />
+            <field name="groups" eval="[(4, ref('group_po_external'))]"/>
+            <field name="domain_force">[('po_type', '=', 'external_purchase')]</field>
+        </record>
+        <record id="rule_PO_Type_internal_id" model="ir.rule">
+            <field name="name">PO Internal</field>
+            <field name="model_id" ref="aldriweesh_po_extension.model_purchase_order" />
+            <field name="groups" eval="[(4, ref('group_po_internal'))]"/>
+            <field name="domain_force">[('po_type', '=', 'internal_purchase')]</field>
+        </record>
+    </data>
+</odoo>

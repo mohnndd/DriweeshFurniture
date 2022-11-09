@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Inherited base Purchase Order Form View -->
+    <record id="purchase_order_form_view_inherited" model="ir.ui.view">
+        <field name="name">purchase.order.form_view.inherited</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_ref']" position="after">
+                <field name="po_type" widget="radio"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.menu" id="purchase.menu_purchase_rfq">
+      <field name="groups_id" eval="[(6, 0, [ref('group_po_external'),ref('group_po_internal')])]"/>
+    </record>
+    <record model="ir.ui.menu" id="purchase.menu_purchase_form_action">
+      <field name="groups_id" eval="[(6, 0, [ref('group_po_external'),ref('group_po_internal')])]"/>
+    </record>
+</odoo>
