@@ -6,7 +6,9 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
-            <xpath expr="identification_id" position="replace"/>
+            <xpath expr="identification_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
             <xpath expr="//field[@name='coach_id']" position="after">
                 <field name="is_saudi"/>
             </xpath>
