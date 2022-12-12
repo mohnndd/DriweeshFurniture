@@ -8,6 +8,7 @@ class HREmployee(models.Model):
 
     is_saudi = fields.Boolean(string='Is Saudi?', compute='_is_from_saudi')
     arabic_name = fields.Char(string='Arabic Name')
+    identification_id = fields.Char(string='ID/ Iqama number', groups="hr.group_hr_user", tracking=True)
 
     def _is_from_saudi(self):
         for employee in self:
