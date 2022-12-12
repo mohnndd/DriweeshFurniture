@@ -16,6 +16,7 @@
     "data": [
         "security/po_security.xml",
         "views/Purchase_order_views.xml",
+        "views/employee_view.xml"
     ],
     # Odoo App Store Specific
     "images": [],
